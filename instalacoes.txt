@@ -1,0 +1,9 @@
+- npm init -y
+- nodemon (npm add nodemon)
+- express (npm add express)
+- sequelize (npm install sequelize@6.32.1 sequelize-cli@6.6.1 --save-exact);
+- SQLite (sqlite3@5.1.6)
+- npx sequelize-cli init
+- npx sequelize-cli model:generate --name Aluno --attributes nome:string,ponto:float
+- npx sequelize-cli db:migrate (mandar alterações para o banco de dados)
+- npx sequelize-cli db:seed:all 
