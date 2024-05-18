@@ -4,6 +4,4 @@ module.exports = function manipuladorDeErros(erro, res, req) {
     } else {
         res.status(500).json({ mensagem: "Erro interno no servidor" })
     }
-
-
 }
