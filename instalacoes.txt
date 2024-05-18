@@ -7,3 +7,4 @@
 - npx sequelize-cli model:generate --name Aluno --attributes nome:string,ponto:float
 - npx sequelize-cli db:migrate (mandar alterações para o banco de dados)
 - npx sequelize-cli db:seed:all 
+- pm2(manter e deixar o arquivo no server ligado )
