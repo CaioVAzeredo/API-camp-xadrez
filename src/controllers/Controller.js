@@ -41,7 +41,7 @@ class Controller {
             const novoAlunocriado = await this.entidadeService.criaRegistro(dadosNovoAluno);
             return res.status(200).json(novoAlunocriado);
         } catch (erro) {
-            return res.status(500).json({ mensagem: erro })
+            manipuladorDeErros(erro, res, req)
         }
     }
     async atualiza(req, res) {
@@ -55,7 +55,7 @@ class Controller {
             }
             return res.status(200).json({ mensagem: 'Aluno atualizado com sucesso' })
         } catch (erro) {
-            return res.status(500).json({ mensagem: erro })
+            manipuladorDeErros(erro, res, req)
         }
     }
     async exclui(req, res) {
@@ -64,7 +64,7 @@ class Controller {
             await this.entidadeService.excluiAluno(Number(id));
             return res.status(200).json({ mensagem: `Aluno excluido com sucesso!` })
         } catch (erro) {
-            return res.status(500).json({ mensagem: erro })
+            manipuladorDeErros(erro, res, req)
         }
     }
 }
