@@ -16,7 +16,7 @@ class Controller {
             }
 
         } catch (erro) {
-            return res.status(500).json({ mensagem: "Erro interno no servidor", erro })
+            manipuladorDeErros(erro, res, req)
         }
     }
 
@@ -38,10 +38,18 @@ class Controller {
     async criaNovo(req, res) {
         const dadosNovoAluno = req.body;
         try {
-            const novoAlunocriado = await this.entidadeService.criaRegistro(dadosNovoAluno);
-            return res.status(200).json(novoAlunocriado);
+            if (dadosNovoAluno.nome === undefined || dadosNovoAluno.ponto === undefined) {
+                if(dadosNovoAluno.nome === undefined){
+                    return res.status(400).json({ mensagem: "O nome do(a) aluno(a) é obrigatório" })
+                }else{
+                    return res.status(400).json({ mensagem: "O ponto é obrigatório, mesmo sendo zero" })
+                }
+            } else {
+                const novoAlunocriado = await this.entidadeService.criaRegistro(dadosNovoAluno);
+                return res.status(200).json(novoAlunocriado);
+            }
         } catch (erro) {
-            return res.status(500).json({ mensagem: erro })
+            manipuladorDeErros(erro, res, req)
         }
     }
     async atualiza(req, res) {
@@ -55,7 +63,7 @@ class Controller {
             }
             return res.status(200).json({ mensagem: 'Aluno atualizado com sucesso' })
         } catch (erro) {
-            return res.status(500).json({ mensagem: erro })
+            manipuladorDeErros(erro, res, req)
         }
     }
     async exclui(req, res) {
@@ -64,7 +72,7 @@ class Controller {
             await this.entidadeService.excluiAluno(Number(id));
             return res.status(200).json({ mensagem: `Aluno excluido com sucesso!` })
         } catch (erro) {
-            return res.status(500).json({ mensagem: erro })
+            manipuladorDeErros(erro, res, req)
         }
     }
 }
