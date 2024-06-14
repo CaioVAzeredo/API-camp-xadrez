@@ -1,5 +1,4 @@
 const manipuladorDeErros = require("../middlewares/manipuladorDeErros.js")
-const manipuladorDeErrosCriaNovo = require("../middlewares/manipuladorDeErros.js")
 
 class Controller {
     constructor(entidadeService) {
