@@ -1,7 +1,14 @@
+const ErroBase = require('../erros/ErroBase.js')
+const RequisicaoIncorreta = require('../erros/RequisicaoIncorreta.js')
+
 module.exports = function manipuladorDeErros(erro, res, req) {
     if (erro.name === "SequelizeDatabaseError") {
-        res.status(400).json({ mensagem: "Um ou mais dados fornecidos estão incorretos" })
+        new RequisicaoIncorreta().enviarResposta(res)
     } else {
-        res.status(500).json({ mensagem: "Erro interno no servidor" })
+        new ErroBase().enviarResposta(res)
     }
+
+}
+module.exports = function manipuladorDeErrosCriaNovo(dadosNovoAluno, res, req){
+
 }

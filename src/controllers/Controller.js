@@ -1,4 +1,5 @@
-const manipuladorDeErros = require("../middlewares/manipuladorDeErros")
+const manipuladorDeErros = require("../middlewares/manipuladorDeErros.js")
+const manipuladorDeErrosCriaNovo = require("../middlewares/manipuladorDeErros.js")
 
 class Controller {
     constructor(entidadeService) {
@@ -39,10 +40,10 @@ class Controller {
         const dadosNovoAluno = req.body;
         try {
             if (dadosNovoAluno.nome === undefined || dadosNovoAluno.ponto === undefined) {
-                if(dadosNovoAluno.nome === undefined){
-                    return res.status(400).json({ mensagem: "O nome do(a) aluno(a) é obrigatório" })
-                }else{
-                    return res.status(400).json({ mensagem: "O ponto é obrigatório, mesmo sendo zero" })
+                if (dadosNovoAluno.nome === undefined) {
+                    return res.status(400).json({ message: "O nome do(a) aluno(a) é obrigatório" })
+                } else {
+                    return res.status(400).json({ message: "O ponto é obrigatório, mesmo sendo zero" })
                 }
             } else {
                 const novoAlunocriado = await this.entidadeService.criaRegistro(dadosNovoAluno);

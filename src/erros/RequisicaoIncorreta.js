@@ -2,7 +2,7 @@ const ErroBase = require("./ErroBase")
 
 class RequisicaoIncorreta extends ErroBase {
     constructor() {
-        super("um ou mais dados fornecidos estão incorretos", 400)
+        super("Um ou mais dados fornecidos estão incorretos", 400)
     }
 }
 
